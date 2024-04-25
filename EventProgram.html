@@ -1,0 +1,85 @@
+<!--Code for CSC102 Sp 2024 Event Driven Programming
+    written by: Daniel Diaz
+                dandiaz2@uat.edu
+                24March2024
+    -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Move That Meme</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #420505;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+    }
+    #meme {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+   <!-- Background music -->
+   <audio id="backgroundMusic" loop>
+    <source src="elevator-to-heaven-aaron-paul-low-main-version-21242-01-42.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <h1>Move That Jpeg</h1>
+  <img id="meme" src="Democracy.jpg" alt="Helldiver">
+  <!-- Start button to initiate movement -->
+  <button id="startBtn">Start</button>
+  <!-- Stop button to halt movement -->
+  <button id="stopBtn" disabled>Stop</button>
+
+  <script src="Eventcode.js"></script>
+
+  <script>
+    // Gets references to the audio element and buttons
+    var backgroundMusic = document.getElementById("backgroundMusic");
+    var startBtn = document.getElementById("startBtn");
+    var stopBtn = document.getElementById("stopBtn");
+
+    // Function to start playing the background music
+    function startBackgroundMusic() {
+      backgroundMusic.play();
+      startBtn.disabled = true; // Disable start button
+      stopBtn.disabled = false; // Enable stop button
+    }
+
+    // Function to stop playing the background music
+    function stopBackgroundMusic() {
+      backgroundMusic.pause();
+      backgroundMusic.currentTime = 0; // Reset music to start
+      startBtn.disabled = false; // Enable start button
+      stopBtn.disabled = true; // Disable stop button
+    }
+
+    // Add click event listeners to the start and stop buttons
+    startBtn.addEventListener("click", startBackgroundMusic);
+    stopBtn.addEventListener("click", stopBackgroundMusic);
+  </script>
+
+  <!--The song is written by Aaron Paul Low and is called Elevator to Heaven
+   Here is the acredidation link and License code 
+  Music from #Uppbeat (free for Creators!):
+  https://uppbeat.io/t/aaron-paul-low/elevator-to-heaven
+  License code: YXJPT13KPNTLEWR4-->
+</body>
+</html>
